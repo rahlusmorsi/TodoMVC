@@ -17,16 +17,13 @@ Todos.TodosController = Ember.ArrayController.extend({
 			// save new model
 			todo.save();
 		},
-		
-		remaining: function () {
-			console.log("remaining was just called.");
-			console.log(this.filterBy('isCompleted', false));
-			return this.filterBy('isCompleted', false).get('length');
-		}.property('@each.isCompleted'),
+	},
+	remaining: function () {
+		return this.filterBy('isCompleted', false).get('length');
+	}.property('@each.isCompleted'),
 
-		inflection: function () {
-			var remaining = this.get('remaining');
-			return remaining === 1 ? 'item' : 'items';
-		}.property('remaining')
-	}
+	inflection: function () {
+		var remaining = this.get('remaining');
+		return remaining === 1 ? 'item' : 'items';
+	}.property('remaining')
 });
